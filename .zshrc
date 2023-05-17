@@ -39,7 +39,6 @@ alias open='explorer.exe'
 alias ll='ls -l'
 alias zsh="vim ~/.zshrc"
 alias zshc="source ~/.zshrc"
-alias Age='cd /mnt/c/Users/kmilchev/source/repos/AgePartnership/'
 
 #Directories
 

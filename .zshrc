@@ -47,6 +47,7 @@ alias luaplay="cd /mnt/c/Users/kmilchev/Exercism/lua"
 #WSL
 alias wsl="wsl.exe"
 #Git
+
 alias git="git.exe"
 alias ga='git add'
 alias gcp='git cherry-pick'

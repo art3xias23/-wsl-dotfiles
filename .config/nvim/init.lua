@@ -1,6 +1,7 @@
 --Maintainer:	Kostantin Milchev <konstantin.milchev@gmail.com>
 -- Last change:	2023 May 19
---Local Lua Variables= {{{
+
+--Local Lua Variables: {{{
 local api=vim.api 
 local cmd=vim.cmd
 local autocmd=api.nvim_create_autocmd
@@ -9,7 +10,7 @@ local Plug = vim.fn['plug#']
 local call=vim.call
 --}}}
 
--- Local Lua Config Functions ={{{
+-- Local Lua Config Functions: {{{
 function map(mode, shortcut, command)
 	vim.api.nvim_set_keymap(mode, shortcut, command, {noremap=true, silent=true})
 end
@@ -83,7 +84,7 @@ call('plug#begin', '~/.config/nvim/plugged')
 call('plug#end')
 -- }}}
 
--- Settings : {{{
+-- Settings: {{{
 cmd('filetype indent plugin on')
 
 cmd 
@@ -101,7 +102,7 @@ endif
 vim.fn.scriptencoding="utf-8"
 -- }}}
 
--- Auto Commands {{{
+-- Auto Commands: {{{
 autocmd("Bufenter", {command=[[silent! lcd %:p:hE]]})
 ---}}}
 
@@ -174,11 +175,11 @@ nmap('gl', ':ls<CR>')
 nmap('gb', ':ls<CR>:b')
 --}}}
 
---Abreviation {{{
+--Abreviation: {{{
 cmd([[iabbrev esle else]])
 --}}}
 
---VimScript file {{{
+--VimScript file: {{{
 local filetype_grp = api.nvim_create_augroup("filetype_vim", {clear = true})
 
 vim.o.foldenable=true
@@ -189,4 +190,3 @@ autocmd("BufEnter", {
 		group = filetype_grp
 	})
 --}}}
-

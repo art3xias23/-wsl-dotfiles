@@ -1,6 +1,5 @@
 --Maintainer:	Kostantin Milchev <konstantin.milchev@gmail.com>
 -- Last change:	2023 May 19
-
 --Local Lua Variables: {{{
 local api=vim.api 
 local cmd=vim.cmd
@@ -11,6 +10,14 @@ local call=vim.call
 --}}}
 
 -- Local Lua Config Functions: {{{
+local function map(mode, combo, mapping, opts)
+  local options = {noremap = true}
+  if opts then
+    options = vim.tbl_extend('force', options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, combo, mapping, options)
+end
+
 function map(mode, shortcut, command)
 	vim.api.nvim_set_keymap(mode, shortcut, command, {noremap=true, silent=true})
 end
@@ -90,11 +97,11 @@ call('plug#begin', '~/.config/nvim/plugged')
 	Plug 'monkoose/nvlime'
 	-- Autocompletion
 	Plug 'https://github.com/hrsh7th/nvim-cmp'
-  Plug ('vlime/vlime', {['rtp']= 'vim/'})
 
 
 call('plug#end')
 -- }}}
+ 
 
 -- Settings: {{{
 cmd('filetype indent plugin on')
@@ -213,4 +220,15 @@ vim.opt.termguicolors = true
 
 -- empty setup using defaults
 require("nvim-tree").setup()
+-- }}}
+-- Coc Config: {{{
+vim.cmd([[inoremap <silent><expr> <CR>
+                    \ coc#pum#visible() ? coc#pum#confirm()
+                    \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]])
+
+vim.cmd([[inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()]])
+
 -- }}}

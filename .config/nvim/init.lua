@@ -66,19 +66,31 @@ vim.opt.hidden = true
 -- Plugs: {{{
 call('plug#begin', '~/.config/nvim/plugged')
 
-	Plug 'https://github.com/preservim/nerdtree.git'
 	-- Surrounding ysw
 	Plug 'https://github.com/tpope/vim-surround.git'
 	-- For Commenting gcc & gc
 	Plug 'https://github.com/tpope/vim-commentary'
 	Plug 'https://github.com/dhruvasagar/vim-table-mode.git'
 	Plug ('instant-markdown/vim-instant-markdown', {['for']= 'markdown', ['do']= 'yarn install'})
+	-- Lean and mean status/tabline for vim
 	Plug 'vim-airline/vim-airline'
 	Plug 'sheerun/vim-polyglot'
 	Plug ('junegunn/fzf', { ['do'] = vim.fn['fzf#install']})
  	Plug 'OmniSharp/omnisharp-vim'
+	-- Pup up menu for autocompletions
 	Plug ('neoclide/coc.nvim', {branch = 'release'})
-    Plug 'ellisonleao/gruvbox.nvim'
+  Plug 'ellisonleao/gruvbox.nvim'
+	-- automatic balancing for lisp parantheses
+	Plug 'gpanders/nvim-parinfer'
+	Plug 'nvim-tree/nvim-tree.lua'
+  Plug 'nvim-tree/nvim-web-devicons'
+	-- Dev tools for support of nvlime
+	Plug 'monkoose/parsley'
+	-- Common lisp dev environment for nvim
+	Plug 'monkoose/nvlime'
+	-- Autocompletion
+	Plug 'https://github.com/hrsh7th/nvim-cmp'
+  Plug ('vlime/vlime', {['rtp']= 'vim/'})
 
 
 call('plug#end')
@@ -190,3 +202,15 @@ autocmd("BufEnter", {
 		group = filetype_grp
 	})
 --}}}
+
+-- nvim-tree {{{
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- set termguicolors to enable highlight groups
+vim.opt.termguicolors = true
+
+-- empty setup using defaults
+require("nvim-tree").setup()
+-- }}}

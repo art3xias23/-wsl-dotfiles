@@ -1,5 +1,6 @@
 --Maintainer:	Kostantin Milchev <konstantin.milchev@gmail.com>
 -- Last change:	2023 May 19
+
 --Local Lua Variables: {{{
 local api=vim.api 
 local cmd=vim.cmd
@@ -8,7 +9,6 @@ local customcmd=api.nvim_add_user_command
 local Plug = vim.fn['plug#']
 local call=vim.call
 --}}}
-
 -- Local Lua Config Functions: {{{
 local function map(mode, combo, mapping, opts)
   local options = {noremap = true}
@@ -34,7 +34,6 @@ function omap(shortcut, command)
 	map('o', shortcut, command)
 end
 -- }}}
-
 --Options: {{{
 vim.opt.number = true
 vim.opt.autoindent=true
@@ -69,7 +68,6 @@ vim.opt.hidden = true
 --vim.opt.mouse=a
 --vim.opt.updatetime=1000
 --}}}
-
 -- Plugs: {{{
 call('plug#begin', '~/.config/nvim/plugged')
 
@@ -91,18 +89,14 @@ call('plug#begin', '~/.config/nvim/plugged')
 	Plug 'gpanders/nvim-parinfer'
 	Plug 'nvim-tree/nvim-tree.lua'
   Plug 'nvim-tree/nvim-web-devicons'
-	-- Dev tools for support of nvlime
-	Plug 'monkoose/parsley'
-	-- Common lisp dev environment for nvim
-	Plug 'monkoose/nvlime'
+	Plug ('vlime/vlime', {['rtp'] = 'vim/'})
+        Plug 'https://github.com/vlime/slime.git'
 	-- Autocompletion
 	Plug 'https://github.com/hrsh7th/nvim-cmp'
 
 
 call('plug#end')
 -- }}}
- 
-
 -- Settings: {{{
 cmd('filetype indent plugin on')
 
@@ -120,11 +114,9 @@ endif
 
 vim.fn.scriptencoding="utf-8"
 -- }}}
-
 -- Auto Commands: {{{
 autocmd("Bufenter", {command=[[silent! lcd %:p:hE]]})
 ---}}}
-
 --- Colors: {{{
 
 --These preferences clear some gruvbox background colours, allowing transparency
@@ -146,7 +138,6 @@ cmd([[
 vim.o.background="dark"
 vim.g.gruvbox_contrast_dark = 'hard'
 -- }}}
-
 -- Mappings: {{{
 
 nmap("gt", [[
@@ -171,6 +162,9 @@ vim.g.mapleader = ","
 --Open vimrc in normal mode with leader ev
 nmap('<leader>ev', ':split $MYVIMRC<cr>')
 
+--format json
+nmap('jqf', ':%!jq .<cr>')
+
 --Refresh vimrc in normal mode with leader sv
 nmap('<leader>sv',':source $MYVIMRC<cr>')
 
@@ -193,11 +187,9 @@ nmap('gl', ':ls<CR>')
 -- List all possible buffers with "gb" and accept a new buffer argument [1]
 nmap('gb', ':ls<CR>:b')
 --}}}
-
 --Abreviation: {{{
 cmd([[iabbrev esle else]])
 --}}}
-
 --VimScript file: {{{
 local filetype_grp = api.nvim_create_augroup("filetype_vim", {clear = true})
 
@@ -209,7 +201,6 @@ autocmd("BufEnter", {
 		group = filetype_grp
 	})
 --}}}
-
 -- nvim-tree {{{
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1

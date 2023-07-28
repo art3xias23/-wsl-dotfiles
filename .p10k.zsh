@@ -115,6 +115,7 @@
     # example               # example user-defined segment (see prompt_example function below)
   )
 
+
   # Defines character set used by powerlevel10k. It's best to let `p10k configure` set it for you.
   typeset -g POWERLEVEL9K_MODE=nerdfont-complete
   # When set to `moderate`, some icons will have an extra space after them. This is meant to avoid
@@ -215,7 +216,7 @@
 
   ##################################[ dir: current directory ]##################################
   # Current directory background color.
-  typeset -g POWERLEVEL9K_DIR_BACKGROUND=5
+  typeset -g POWERLEVEL9K_DIR_BACKGROUND=6
   # Default current directory foreground color.
   typeset -g POWERLEVEL9K_DIR_FOREGROUND=122
   # If directory is too long, shorten some of its segments to the shortest possible unique

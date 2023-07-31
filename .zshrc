@@ -111,8 +111,6 @@ alias refreshbash='. ~kmilchev/.bashrc'
 PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin:${PATH}"
 export PATH
 
-export OPENAI_API_KEY="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"
-
 #Use openai command line tool
 export PATH=$PATH:/home/tino/.local/bin
 export PATH="$PATH:/home/tino/.local/lib/python3.9/site-packages/openai"

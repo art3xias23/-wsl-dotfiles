@@ -28,6 +28,9 @@ plugins=(git zsh-autosuggestions)
 
 GITSTATUS_LOG_LEVEL=DEBUG
 
+# Get git branch autocomplete
+autoload -Uz compinit && compinit
+
 source $ZSH/oh-my-zsh.sh
 source ~/.nvm/nvm.sh
 
@@ -49,20 +52,20 @@ export PATH="$HOME/.luarocks/bin:$PATH"
 #Explorer
 alias open='explorer.exe'
 alias ll='ls -l'
-alias zsh="nvim ~/.zshrc"
-alias zshc="source ~/.zshrc"
+alias ezsh="nvim ~/.zshrc"
+alias szsh="source ~/.zshrc"
 alias start='cmd.exe /C start'
 alias clip="clip.exe"
 alias cld="cd /mnt/c/Users/kmilchev/Exercism/common-lisp/"
 alias grep='grep --color=always'
 #Directories
 
-alias luaplay="cd /mnt/c/Users/kmilchev/Exercism/lua"
-alias home="cd ~/" 
-alias main="cd /mnt/c/Users/kmilchev/source/repos/AgePartnership"
+alias luadir="cd /mnt/c/Users/kmilchev/Exercism/lua"
+alias homedir="cd ~/" 
+alias apdir="cd /mnt/c/Users/kmilchev/source/repos/AgePartnership"
 
 #Nvim
-alias nvi='nvim ~/.config/nvim/init.lua'
+alias nvlua='nvim ~/.config/nvim/init.lua'
 alias nv='nvim'
 
 #SBCL
@@ -73,8 +76,8 @@ alias wsl="wsl.exe"
 
 #P10K Logs
 alias pklog='less $GITSTATUS_DAEMON_LOG_POWERLEVEL9K'
-alias pkconf='nvim ~/.p10k.zsh'
-alias pkc='source ~/.p10k.zsh'
+alias ep10k='nvim ~/.p10k.zsh'
+alias sp10k='source ~/.p10k.zsh'
 
 #Random
 alias cl='clear'

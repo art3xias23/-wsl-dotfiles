@@ -24,7 +24,9 @@ DISABLE_LS_COLORS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(git 
+  zsh-autosuggestions
+  zsh-syntax-highlighting)
 
 GITSTATUS_LOG_LEVEL=DEBUG
 

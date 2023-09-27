@@ -13,6 +13,9 @@ fi
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+
+#JAVA_HOME
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="powerlevel10k/powerlevel10k"
 #ZSH_THEME="eastwood"
@@ -25,8 +28,7 @@ DISABLE_LS_COLORS="true"
 
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git 
-  zsh-autosuggestions
-  zsh-syntax-highlighting)
+  zsh-autosuggestions)
 
 GITSTATUS_LOG_LEVEL=DEBUG
 
@@ -67,8 +69,8 @@ alias homedir="cd ~/"
 alias apdir="cd /mnt/c/Users/kmilchev/source/repos/AgePartnership"
 
 #Nvim
-alias nvlua='nvim ~/.config/nvim/init.lua'
-alias nv='nvim'
+alias env='nvim ~/.config/nvim/init.lua'
+alias e='nvim'
 
 #SBCL
 alias nsb="rlwrap sbcl --load ~/.config/nvim/plugged/vlime/lisp/start-vlime.lisp"
@@ -92,12 +94,15 @@ alias gaa='git add -A'
 alias gcm='git commit -m'
 alias gpull='git pull'
 alias gpush='git push'
+alias ipush='git push --set-upstream origin $(../branch.sh "$(git push 2>&1)")'
 alias gfo='git fetch origin'
 alias gs='git status'
 alias gl='git log'
 alias gwl='git worktree list'
 alias gap='git add -p'
 alias gcmer='git branch --sort=-committerdate | head -10'
+alias gmd='git fetch origin development:development && git merge development'
+alias gmm='git fetch origin master:master && git merge master'
 alias lua='lua54.exe'
 
 #MSBuild

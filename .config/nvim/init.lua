@@ -203,6 +203,7 @@ autocmd("BufEnter", {
 --}}}
 -- nvim-tree {{{
 -- disable netrw at the very start of your init.lua
+vim.api.nvim_set_keymap('n', '<leader>n', ':NvimTreeOpen<CR>', {noremap = true, silent = true})
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 

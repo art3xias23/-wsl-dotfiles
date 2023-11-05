@@ -35,6 +35,8 @@ function omap(shortcut, command)
 end
 -- }}}
 --Options: {{{
+--give vim 500 mlseconds to wait for a sequence key for a command
+vim.opt.timeoutlen=500
 vim.opt.number = true
 vim.opt.autoindent=true
 vim.opt.tabstop= 4
@@ -70,7 +72,6 @@ vim.opt.hidden = true
 --}}}
 -- Plugs: {{{
 call('plug#begin', '~/.config/nvim/plugged')
-
 	-- Surrounding ysw
 	Plug 'https://github.com/tpope/vim-surround.git'
 	-- For Commenting gcc & gc
@@ -90,7 +91,7 @@ call('plug#begin', '~/.config/nvim/plugged')
 	Plug 'nvim-tree/nvim-tree.lua'
   Plug 'nvim-tree/nvim-web-devicons'
 	Plug ('vlime/vlime', {['rtp'] = 'vim/'})
-        Plug 'https://github.com/vlime/slime.git'
+  Plug 'https://github.com/vlime/slime.git'
 	-- Autocompletion
 	Plug 'https://github.com/hrsh7th/nvim-cmp'
 
@@ -106,11 +107,11 @@ cmd
 ]]
 
 -- Use truecolor in the terminal, when it is supported
-cmd [[
-if has('termguicolors')
-  set termguicolors
-endif
-]]
+-- cmd [[
+-- if has('termguicolors')
+--   set termguicolors
+-- endif
+-- ]]
 
 vim.fn.scriptencoding="utf-8"
 -- }}}
@@ -120,7 +121,7 @@ autocmd("Bufenter", {command=[[silent! lcd %:p:hE]]})
 --- Colors: {{{
 
 --These preferences clear some gruvbox background colours, allowing transparency
-local colorGrp = api.nvim_create_augroup("ColorschemePreferences", {clear=true})
+--local colorGrp = api.nvim_create_augroup("ColorschemePreferences", {clear=true})
 
 autocmd("ColorScheme", {
 	command = "highlight SignColumn ctermbg=NONE guibg=NONE",
@@ -129,7 +130,6 @@ autocmd("ColorScheme", {
 autocmd("ColorScheme", {
 	command = "highlight Todo ctermbg=NONE guibg=NONE",
 	group = colorGrp})
-
 
 cmd([[
 	colorscheme gruvbox
@@ -146,12 +146,10 @@ nmap("gt", [[
 
 -- operator mapping replacing p with i( which stands for change inside paranthesis'
 --useful with cp or dp mappings
-
 omap('p','i(')
 
 -- use jk and kj to save a file in insert mode
 imap('jk', '<esc>:w<cr>')
-imap('kj', '<esc>:w<cr>')
 
 -- Unmap esc in insert mode, nop is no operation
 imap('<esc>', '<nop>')
@@ -161,9 +159,6 @@ vim.g.mapleader = ","
 
 --Open vimrc in normal mode with leader ev
 nmap('<leader>ev', ':split $MYVIMRC<cr>')
-
---format json
-nmap('jqf', ':%!jq .<cr>')
 
 --Refresh vimrc in normal mode with leader sv
 nmap('<leader>sv',':source $MYVIMRC<cr>')
@@ -194,6 +189,9 @@ cmd([[iabbrev esle else]])
 local filetype_grp = api.nvim_create_augroup("filetype_vim", {clear = true})
 
 vim.o.foldenable=true
+vim.wo.relativenumber = true
+vim.api.nvim_set_hl(0, 'LineNr', { fg = "white"})
+vim.cmd[[highlight Visual cterm=bold ctermbg=Blue ctermfg=Red]]
 
 autocmd("BufEnter", { 
 		command = [[setlocal foldmethod=marker]],
@@ -208,7 +206,7 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- set termguicolors to enable highlight groups
-vim.opt.termguicolors = true
+--vim.opt.termguicolors = true
 
 -- empty setup using defaults
 require("nvim-tree").setup()
@@ -222,5 +220,4 @@ vim.cmd([[inoremap <silent><expr> <Tab>
       \ coc#pum#visible() ? coc#pum#next(1) :
       \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()]])
-
 -- }}}

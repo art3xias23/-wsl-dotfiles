@@ -61,6 +61,8 @@ alias szsh="source ~/.zshrc"
 alias start='cmd.exe /C start'
 alias clip="clip.exe"
 alias cld="cd /mnt/c/Users/kmilchev/Exercism/common-lisp/"
+alias pcld="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Lisp/CommonLisp/Practical_Common_Lisp/"
+alias hx="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Web/htmx-playground"
 alias grep='grep --color=always'
 #Directories
 
@@ -140,6 +142,8 @@ alias guw='gum use Work'
 alias gup='gum use Play'
 alias gdel='gum delete'
 
+set shell=/bin/zsh
+
 #Exercism
 alias es='exercism.exe submit'
 alias exercism='exercism.exe'
@@ -157,6 +161,8 @@ function psql
     sqlcmd -E -S "$1" -d "$2" -Q "$3";
 }
 
+# Below command will help wsl2 use the windows graphics in order to run GUIs
+export DISPLAY="$(ip route list exact default | awk '{print $3}'):0"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

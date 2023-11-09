@@ -72,6 +72,13 @@ vim.opt.hidden = true
 --}}}
 -- Plugs: {{{
 call('plug#begin', '~/.config/nvim/plugged')
+	-- Go setup Start--
+	Plug 'nvim-treesitter/nvim-treesitter'
+	Plug 'neovim/nvim-lspconfig'
+	Plug 'ray-x/go.nvim'
+	Plug 'ray-x/guihua.lua'
+	-- Go setup End--
+
 	-- Surrounding ysw
 	Plug 'https://github.com/tpope/vim-surround.git'
 	-- For Commenting gcc & gc

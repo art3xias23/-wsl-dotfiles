@@ -9,7 +9,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #
-
+export PATH=$PATH:/usr/local/go/bin
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -63,6 +63,7 @@ alias clip="clip.exe"
 alias cld="cd /mnt/c/Users/kmilchev/Exercism/common-lisp/"
 alias pcld="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Lisp/CommonLisp/Practical_Common_Lisp/"
 alias hx="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Web/htmx-playground"
+alias ggo="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/go"
 alias grep='grep --color=always'
 #Directories
 
@@ -102,6 +103,7 @@ alias gs='git status'
 alias gl='git log'
 alias gwl='git worktree list'
 alias gap='git add -p'
+alias gac='git add . && git commit -m'
 alias gcmer='git branch --sort=-committerdate | head -10'
 alias gmd='git fetch origin development:development && git merge development'
 alias gmm='git fetch origin master:master && git merge master'

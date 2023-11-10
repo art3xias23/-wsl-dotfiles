@@ -72,13 +72,14 @@ vim.opt.hidden = true
 --}}}
 -- Plugs: {{{
 call('plug#begin', '~/.config/nvim/plugged')
+
 	-- Go setup Start--
 	Plug 'nvim-treesitter/nvim-treesitter'
 	Plug 'neovim/nvim-lspconfig'
 	Plug 'ray-x/go.nvim'
 	Plug 'ray-x/guihua.lua'
 	-- Go setup End--
-
+	 
 	-- Surrounding ysw
 	Plug 'https://github.com/tpope/vim-surround.git'
 	-- For Commenting gcc & gc
@@ -112,6 +113,32 @@ cmd
 [[
 	if !exists('g:syntax_on') | syntax enable | endif
 ]]
+
+--Go formatter
+local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+   require('go.format').goimport()
+  end,
+  group = format_sync_grp,
+})
+require('go').setup()
+
+require("go.format").gofmt()  -- gofmt only
+require("go.format").goimport()  -- goimport + gofmt
+
+-- Run gofmt + goimport on save
+
+local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+   require('go.format').goimport()
+  end,
+  group = format_sync_grp,
+})
+
 
 -- Use truecolor in the terminal, when it is supported
 -- cmd [[

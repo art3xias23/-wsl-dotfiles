@@ -52,6 +52,9 @@ export PATH="$HOME/.luarocks/bin:$PATH"
 
 # You may need to manually set your language environment
  export LANG=en_US.UTF-8
+ #Golang
+ alias gt='go test'
+ alias grun='go run'
 
 #Explorer
 alias open='explorer.exe'
@@ -63,7 +66,7 @@ alias clip="clip.exe"
 alias cld="cd /mnt/c/Users/kmilchev/Exercism/common-lisp/"
 alias pcld="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Lisp/CommonLisp/Practical_Common_Lisp/"
 alias hx="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Web/htmx-playground"
-alias ggo="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/go"
+alias ggo="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/go/LearnGoWithTests"
 alias grep='grep --color=always'
 #Directories
 
@@ -100,6 +103,7 @@ alias gpush='git push'
 alias ipush='git push --set-upstream origin $(../branch.sh "$(git push 2>&1)")'
 alias gfo='git fetch origin'
 alias gs='git status'
+alias gr='git reset'
 alias gl='git log'
 alias gwl='git worktree list'
 alias gap='git add -p'

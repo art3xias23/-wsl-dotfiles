@@ -1,17 +1,3 @@
-#c Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-#n3
-#POWERLEVEL10KCONFIG
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
-#POWERLEVEL10K_VCS_CLEAN_FOREGROUND='blue'
-#POWERLEVEL10K_VCS_CLEAN_BACKGROUND='black'
-#POWERLEVEL10K_VCS_UNTRACKED_FOREGROUND='yellow'
-#POWERLEVEL10K_VCS_UNTRACKED_BACKGROUND='black'
-#POWERLEVEL10K_VCS_MODIFIED_FOREGROUND='red'
-#POWERLEVEL10K_VCS_MODIFIED_BACKGROUND='black'
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -23,19 +9,11 @@ export ZSH="$HOME/.oh-my-zsh"
 
 #JAVA_HOME
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-PROMPT='%F{blue}%1~%f %# '
-# Uncomment the following line to disable colors in ls.
-DISABLE_LS_COLORS="true"
-
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions)
-
-GITSTATUS_LOG_LEVEL=DEBUG
+plugins=(git zsh-autosuggestions)
 
 # Get git branch autocomplete
 autoload -Uz compinit && compinit
@@ -43,9 +21,12 @@ autoload -Uz compinit && compinit
 source $ZSH/oh-my-zsh.sh
 source ~/.nvm/nvm.sh
 
-
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
+# Uncomment the following line to disable colors in ls.
+#DISABLE_LS_COLORS="true"
 # User configuration
-# Advanced `vcs` color customization
+PROMPT='%{$fg_bold[green]%}➜ %F{cyan}%1/%f %{$reset_color%}'
 #Path to luarocks
 export PATH="$HOME/.luarocks/bin:$PATH"
 
@@ -91,11 +72,6 @@ alias nsb="rlwrap sbcl --load ~/.config/nvim/plugged/vlime/lisp/start-vlime.lisp
 
 #WSL
 alias wsl="wsl.exe"
-
-#P10K Logs
-#alias pklog='less $GITSTATUS_DAEMON_LOG_POWERLEVEL9K'
-#alias ep10k='nvim ~/.p10k.zsh'
-#alias sp10k='source ~/.p10k.zsh'
 
 #Random
 alias cl='clear'
@@ -178,11 +154,8 @@ function psql
 # Below command will help wsl2 use the windows graphics in order to run GUIs
 export DISPLAY="$(ip route list exact default | awk '{print $3}'):0"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
-export PATH="$PATH:/opt/mssql-tools/bin"

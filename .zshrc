@@ -1,10 +1,17 @@
 #c Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 #n3
+#POWERLEVEL10KCONFIG
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
+#POWERLEVEL10K_VCS_CLEAN_FOREGROUND='blue'
+#POWERLEVEL10K_VCS_CLEAN_BACKGROUND='black'
+#POWERLEVEL10K_VCS_UNTRACKED_FOREGROUND='yellow'
+#POWERLEVEL10K_VCS_UNTRACKED_BACKGROUND='black'
+#POWERLEVEL10K_VCS_MODIFIED_FOREGROUND='red'
+#POWERLEVEL10K_VCS_MODIFIED_BACKGROUND='black'
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -17,9 +24,8 @@ export ZSH="$HOME/.oh-my-zsh"
 #JAVA_HOME
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="powerlevel10k/powerlevel10k"
-#ZSH_THEME="eastwood"
-
+ZSH_THEME="robbyrussell"
+PROMPT='%F{blue}%1~%f %# '
 # Uncomment the following line to disable colors in ls.
 DISABLE_LS_COLORS="true"
 
@@ -27,8 +33,7 @@ DISABLE_LS_COLORS="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git 
-  zsh-autosuggestions)
+plugins=(zsh-autosuggestions)
 
 GITSTATUS_LOG_LEVEL=DEBUG
 
@@ -41,12 +46,6 @@ source ~/.nvm/nvm.sh
 
 # User configuration
 # Advanced `vcs` color customization
-POWERLEVEL10K_VCS_CLEAN_FOREGROUND='blue'
-POWERLEVEL10K_VCS_CLEAN_BACKGROUND='black'
-POWERLEVEL10K_VCS_UNTRACKED_FOREGROUND='yellow'
-POWERLEVEL10K_VCS_UNTRACKED_BACKGROUND='black'
-POWERLEVEL10K_VCS_MODIFIED_FOREGROUND='red'
-POWERLEVEL10K_VCS_MODIFIED_BACKGROUND='black'
 #Path to luarocks
 export PATH="$HOME/.luarocks/bin:$PATH"
 
@@ -62,7 +61,7 @@ export PATH="$HOME/.luarocks/bin:$PATH"
  alias grun='go run'
  alias tr='templ generate && go run .'
 
-#Explore
+ #Misc
 alias open='explorer.exe'
 alias templ='templ.exe'
 alias ll='ls -l'
@@ -94,9 +93,9 @@ alias nsb="rlwrap sbcl --load ~/.config/nvim/plugged/vlime/lisp/start-vlime.lisp
 alias wsl="wsl.exe"
 
 #P10K Logs
-alias pklog='less $GITSTATUS_DAEMON_LOG_POWERLEVEL9K'
-alias ep10k='nvim ~/.p10k.zsh'
-alias sp10k='source ~/.p10k.zsh'
+#alias pklog='less $GITSTATUS_DAEMON_LOG_POWERLEVEL9K'
+#alias ep10k='nvim ~/.p10k.zsh'
+#alias sp10k='source ~/.p10k.zsh'
 
 #Random
 alias cl='clear'
@@ -130,9 +129,6 @@ alias dotnet='dotnet.exe'
 
 #Nuget
 alias nuget='nuget.exe'
-
-#Random
-alias refreshbash='. ~kmilchev/.bashrc'
 
 # Setting PATH for Python 3.10
 PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin:${PATH}"
@@ -179,17 +175,11 @@ function psql
     sqlcmd -E -S "$1" -d "$2" -Q "$3";
 }
 
-# Measures the loading tme of zsh
-timezsh() {
-  shell=${1-$SHELL}
-  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
-}
-
 # Below command will help wsl2 use the windows graphics in order to run GUIs
 export DISPLAY="$(ip route list exact default | awk '{print $3}'):0"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

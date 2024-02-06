@@ -13,7 +13,7 @@ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
+plugins=(zsh-autosuggestions)
 
 # Get git branch autocomplete
 autoload -Uz compinit && compinit
@@ -26,7 +26,7 @@ ZSH_THEME="robbyrussell"
 # Uncomment the following line to disable colors in ls.
 #DISABLE_LS_COLORS="true"
 # User configuration
-PROMPT='%{$fg_bold[green]%}➜ %F{cyan}%1/%f %{$reset_color%}'
+PROMPT='%B%{$fg_bold[green]%}➜ %F{cyan}%1/%f%b %{$reset_color%}'
 #Path to luarocks
 export PATH="$HOME/.luarocks/bin:$PATH"
 

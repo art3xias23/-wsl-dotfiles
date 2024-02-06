@@ -33,6 +33,10 @@ end
 function omap(shortcut, command)
 	map('o', shortcut, command)
 end
+
+function xmap(shortcut, command)
+	map('x', shortcut, command)
+end
 -- }}}
 --Options: {{{
 --give vim 500 mlseconds to wait for a sequence key for a command
@@ -73,15 +77,11 @@ vim.opt.hidden = true
 -- Plugs: {{{
 call('plug#begin', '~/.config/nvim/plugged')
 
-	-- Go setup Start--
-	Plug 'nvim-treesitter/nvim-treesitter'
-	Plug 'neovim/nvim-lspconfig'
-	Plug 'ray-x/go.nvim'
-	Plug 'ray-x/guihua.lua'
-	-- Go setup End--
-	 
+	--Lsp server, linter and formatter manager
+	Plug 'williamboman/mason.nvim'
 	-- Surrounding ysw
 	Plug 'https://github.com/tpope/vim-surround.git'
+	Plug 'dimfred/resize-mode.nvim'
 	-- For Commenting gcc & gc
 	Plug 'https://github.com/tpope/vim-commentary'
 	Plug 'https://github.com/dhruvasagar/vim-table-mode.git'
@@ -114,30 +114,6 @@ cmd
 	if !exists('g:syntax_on') | syntax enable | endif
 ]]
 
---Go formatter
-local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function()
-   require('go.format').goimport()
-  end,
-  group = format_sync_grp,
-})
-require('go').setup()
-
-require("go.format").gofmt()  -- gofmt only
-require("go.format").goimport()  -- goimport + gofmt
-
--- Run gofmt + goimport on save
-
-local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function()
-   require('go.format').goimport()
-  end,
-  group = format_sync_grp,
-})
 
 
 -- Use truecolor in the terminal, when it is supported
@@ -177,6 +153,8 @@ vim.g.gruvbox_contrast_dark = 'hard'
 nmap("gt", [[
 :execute "rightbelow split " . bufname("#")<cr>
 ]])
+
+nmap('<Leader>r', '<cmd>lua resize_mode.start()<CR>')
 
 -- operator mapping replacing p with i( which stands for change inside paranthesis'
 --useful with cp or dp mappings
@@ -244,6 +222,31 @@ vim.g.loaded_netrwPlugin = 1
 
 -- empty setup using defaults
 require("nvim-tree").setup()
+-- }}}
+
+-- mason setup
+require("mason").setup()
+-- resize-mode{{{
+require("resize-mode").setup {
+  horizontal_amount = 9,
+  vertical_amount = 5,
+  quit_key = "<ESC>",
+  enable_mapping = true,
+  resize_keys = {
+      "h", -- increase to the left
+      "j", -- increase to the bottom
+      "k", -- increase to the top
+      "l", -- increase to the right
+      "H", -- decrease to the left
+      "J", -- decrease to the bottom
+      "K", -- decrease to the top
+      "L"  -- decrease to the right
+  },
+  hooks = {
+    on_enter = nil, -- called when entering resize mode
+ on_leave = nil  -- called when leaving resize mode
+  }
+}
 -- }}}
 -- Coc Config: {{{
 vim.cmd([[inoremap <silent><expr> <CR>

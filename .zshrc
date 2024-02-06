@@ -52,30 +52,39 @@ export PATH="$HOME/.luarocks/bin:$PATH"
 
 # You may need to manually set your language environment
  export LANG=en_US.UTF-8
+
+ #MongoDb
+ alias mngl='mongosh --host 172.28.224.1 --port 27017'
+
  #Golang
+ alias wgo='wgo.exe'
  alias gt='go test'
  alias grun='go run'
+ alias tr='templ generate && go run .'
 
-#Explorer
+#Explore
 alias open='explorer.exe'
+alias templ='templ.exe'
 alias ll='ls -l'
 alias ezsh="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
 alias start='cmd.exe /C start'
 alias clip="clip.exe"
-alias cld="cd /mnt/c/Users/kmilchev/Exercism/common-lisp/"
-alias pcld="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Lisp/CommonLisp/Practical_Common_Lisp/"
-alias hx="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Web/htmx-playground"
-alias ggo="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/go/LearnGoWithTests"
 alias grep='grep --color=always'
 #Directories
 
 alias luadir="cd /mnt/c/Users/kmilchev/Exercism/lua"
 alias homedir="cd ~/" 
-alias apdir="cd /mnt/c/Users/kmilchev/source/repos/AgePartnership"
+alias workdir="cd /mnt/c/Users/kmilchev/source/repos/AgePartnership"
+alias cld="cd /mnt/c/Users/kmilchev/Exercism/common-lisp/"
+alias pcld="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Lisp/CommonLisp/Practical_Common_Lisp/"
+alias codedir="cd /mnt/c/Users/kmilchev/Desktop/Code/"
+alias hx="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Web/htmx-playground"
+alias ggo="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/go/"
 
 #Nvim
 alias env='nvim ~/.config/nvim/init.lua'
+alias snv='source ~/.config/nvim/init.lua'
 alias e='nvim'
 
 #SBCL
@@ -115,6 +124,9 @@ alias lua='lua54.exe'
 
 #MSBuild
 alias msbuild='msbuild.exe'
+
+#dotnet
+alias dotnet='dotnet.exe'
 
 #Nuget
 alias nuget='nuget.exe'
@@ -165,6 +177,12 @@ function psql
 	# -Q "SET NOCOUNT ON; $3"	Query, don't print rows affected, third arg is query
     
     sqlcmd -E -S "$1" -d "$2" -Q "$3";
+}
+
+# Measures the loading tme of zsh
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
 }
 
 # Below command will help wsl2 use the windows graphics in order to run GUIs

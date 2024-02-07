@@ -13,7 +13,7 @@ export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions)
+plugins=(git zsh-autosuggestions)
 
 # Get git branch autocomplete
 autoload -Uz compinit && compinit

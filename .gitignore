@@ -1,4 +1,4 @@
-.config/nvim_bak/plugged/*
+.config/nvim_bak/plugged/
 ad-hoc.lisp
 .antigen
 .bash_history

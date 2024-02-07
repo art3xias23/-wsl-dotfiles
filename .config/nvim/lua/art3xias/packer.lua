@@ -17,10 +17,14 @@ return require('packer').startup(function(use)
 
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
-  use {
+  use (
 	  'nvim-treesitter/nvim-treesitter',
-	  run = ':TSUpdate'
-  }
+	  { run = ':TSUpdate'
+  })
+use ('nvim-treesitter/playground')
+
+use( "ThePrimeagen/harpoon")
+
 
 
   end)

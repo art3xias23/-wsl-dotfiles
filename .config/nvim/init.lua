@@ -17,4 +17,12 @@ if vim.fn.has('wsl') == 1 then
 	}
 end
 
+function CheckLsp()
+	if vim.lsp.buf.server_ready() then
+	print("LSP is attached to the current buffer.")
+	else
+	print("No LSP attached to the current buffer.")
+	end
+end
 
+vim.cmd('command! Lsp call v:lua.CheckLsp()')

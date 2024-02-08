@@ -1,78 +1,65 @@
+local on_attach = function(_, bufnr)
+	local opts = { noremap = true, silent = true, buffer = bufnr }
+	vim.keymap.set("n", "<leader>bo", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", opts)
+	vim.keymap.set("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	vim.keymap.set("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+	vim.keymap.set("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
+	vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	vim.keymap.set("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+	vim.keymap.set("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
+	vim.keymap.set("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
+	vim.keymap.set("n", "<leader>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+	vim.keymap.set("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
+	vim.keymap.set("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+	vim.keymap.set("n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+	vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+	vim.keymap.set("n", "<leader>e", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+	vim.keymap.set("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+	vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
+	vim.keymap.set("n", "<leader>dl", "<cmd>lua vim.lsp.diagnostic.setloclist()<CR>", opts)
+end
 
-local lsp = require('lsp-zero')
-lsp.extend_lspconfig()
-
-lsp.preset({})
-
-lsp.on_attach(function(client, bufnr)
-	lsp.default_keymaps({buffer = bufnr})
-end)
-lsp.setup()
-
---START
-require'lspconfig'.omnisharp.setup {
-    cmd = { "dotnet", "/usr/local/bin/omnisharp/omnisharp.dll" },
-
-    -- Enables support for reading code style, naming convention and analyzer
-    -- settings from .editorconfig.
-    enable_editorconfig_support = true,
-
-    -- If true, MSBuild project system will only load projects for files that
-    -- were opened in the editor. This setting is useful for big C# codebases
-    -- and allows for faster initialization of code navigation features only
-    -- for projects that are relevant to code that is being edited. With this
-    -- setting enabled OmniSharp may load fewer projects and may thus display
-    -- incomplete reference lists for symbols.
-    enable_ms_build_load_projects_on_demand = false,
-
-    -- Enables support for roslyn analyzers, code fixes and rulesets.
-    enable_roslyn_analyzers = false,
-
-    -- Specifies whether 'using' directives should be grouped and sorted during
-    -- document formatting.
-    organize_imports_on_format = false,
-
-    -- Enables support for showing unimported types and unimported extension
-    -- methods in completion lists. When committed, the appropriate using
-    -- directive will be added at the top of the current file. This option can
-    -- have a negative impact on initial completion responsiveness,
-    -- particularly for the first few completion sessions after opening a
-    -- solution.
-    enable_import_completion = false,
-
-    -- Specifies whether to include preview versions of the .NET SDK when
-    -- determining which version to use for project loading.
-    sdk_include_prereleases = true,
-
-    -- Only run analyzers against open files when 'enableRoslynAnalyzers' is
-    -- true
-    analyze_open_documents_only = false,
+local rounded_border_handlers = {
+	["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+	["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 }
 
---END
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
-local cmp = require('cmp')
-
-cmp.setup({
-	mapping = {
-		['CR'] = cmp.mapping.confirm({select = false})
+require("mason").setup()
+require("mason-lspconfig").setup({
+	ensure_installed = {
+		"lua_ls",
+		"rust_analyzer",
+		"gopls",
+		"omnisharp",
+		"zls",
 	},
-	window = {
-	completion = cmp.config.window.bordered(),
-	documentation = cmp.config.window.bordered(),
-	 snippet = {
-        expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-        end
-    }
-}
 })
-
-local navic = require('nvim-navic')
-
-lsp.on_attach(function(client, bufnr)
-    lsp.default_keymaps({buffer = bufnr})
-    if client.server_capabilities.documentSymbolProvider then
-        navic.attach(client, bufnr)
-    end
-end)
+require("mason-lspconfig").setup_handlers({
+	function(server_name)
+		require("lspconfig")[server_name].setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			handlers = rounded_border_handlers,
+		})
+	end,
+	["omnisharp"] = function()
+		require("lspconfig")["omnisharp"].setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			root_dir = function(fname)
+				local lspconfig = require("lspconfig")
+				local primary = lspconfig.util.root_pattern("*.sln")(fname)
+				local fallback = lspconfig.util.root_pattern("*.csproj")(fname)
+				return primary or fallback
+			end,
+			analyze_open_documents_only = true,
+			organize_imports_on_format = true,
+			handlers = vim.tbl_extend("force", rounded_border_handlers, {
+				["textDocument/definition"] = require("omnisharp_extended").handler,
+			}),
+		})
+	end
+})

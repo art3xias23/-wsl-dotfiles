@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://github.com/OmniSharp/omnisharp-roslyn/releases
+HostUrl=https://objects.githubusercontent.com/github-production-release-asset-2e65be/27927984/d4142f41-fdf7-4084-ac31-8be81badd772?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240207%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240207T225821Z&X-Amz-Expires=300&X-Amz-Signature=978e71fa53adbe80e3279c181297883d4c9111831f672a78f59240cc6e40b4bc&X-Amz-SignedHeaders=host&actor_id=23562239&key_id=0&repo_id=27927984&response-content-disposition=attachment%3B%20filename%3Domnisharp-linux-x64-net6.0.tar.gz&response-content-type=application%2Foctet-stream

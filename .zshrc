@@ -55,6 +55,7 @@ alias grep='grep --color=always'
 
 alias luadir="cd /mnt/c/Users/kmilchev/Exercism/lua"
 alias homedir="cd ~/" 
+alias ndir="cd ~/.config/nvim" 
 alias workdir="cd /mnt/c/Users/kmilchev/source/repos/AgePartnership"
 alias cld="cd /mnt/c/Users/kmilchev/Exercism/common-lisp/"
 alias pcld="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Lisp/CommonLisp/Practical_Common_Lisp/"
@@ -94,6 +95,7 @@ alias gwl='git worktree list'
 alias gap='git add -p'
 alias gac='git add . && git commit -m'
 alias gcmer='git branch --sort=-committerdate | head -10'
+alias gcb='git rev-parse --abbrev-ref HEAD'
 alias gmd='git fetch origin development:development && git merge development'
 alias gmm='git fetch origin master:master && git merge master'
 alias lua='lua54.exe'
@@ -152,6 +154,17 @@ function psql
     sqlcmd -E -S "$1" -d "$2" -Q "$3";
 }
 
+#Set upstream branch
+function  gsetu 
+{
+	echo "Hello\n"
+	 local current_branch=$(gcb)
+	  echo "Current branch: $current_branch\n"
+	 local upstream_branch="origin/$current_branch"
+	  echo "upstream branch: $upstream_branch\n"
+	 git branch --set-upstream-to="$upstream_branch" "$current_branch"
+}
+
 # Below command will help wsl2 use the windows graphics in order to run GUIs
 export DISPLAY="$(ip route list exact default | awk '{print $3}'):0"
 
@@ -160,3 +173,7 @@ export DISPLAY="$(ip route list exact default | awk '{print $3}'):0"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+
+
+
+

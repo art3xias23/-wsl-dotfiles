@@ -1,4 +1,5 @@
 function ColorMyPencils(color)
+	--default to rosepine
 	color = color or 'rose-pine'
 	vim.cmd.colorscheme(color)
 
@@ -7,4 +8,4 @@ function ColorMyPencils(color)
 end
 
 
-ColorMyPencils()
+ColorMyPencils("dracula")

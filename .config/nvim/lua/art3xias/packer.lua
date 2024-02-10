@@ -13,7 +13,10 @@ return require('packer').startup(function(use)
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
-	use { "rose-pine/neovim", as = "rose-pine", config = function() vim.cmd('colorscheme rose-pine') end }
+	--Themes
+	use { "rose-pine/neovim", as = "rose-pine" }
+	use {"dracula/vim", as = "dracula"}
+
 
 	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 

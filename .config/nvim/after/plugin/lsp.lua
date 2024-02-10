@@ -27,7 +27,8 @@ cmp.setup({
 })
 
 
-require('lspconfig').lua_ls.setup(lua_opts)
+local lsp_config = require('lspconfig')
+lsp_config.lua_ls.setup(lua_opts)
 
 require("mason").setup({})
 
@@ -38,5 +39,12 @@ require("mason-lspconfig").setup({
 	},
 	handlers = {
 		lsp_zero.default_setup,
+
+		omnisharp = function()
+			lsp_config.omnisharp.setup({
+				handlers = { ['textDocument/definition'] = require('omnisharp_extended').handler }
+			})
+		end
+
 	}
 })

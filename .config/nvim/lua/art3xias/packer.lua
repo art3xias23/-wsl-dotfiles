@@ -10,56 +10,61 @@ return require('packer').startup(function(use)
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.5',
 		-- or                            , branch = '0.1.x',
-		requires = { {'nvim-lua/plenary.nvim'} }
+		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
 
 	--Themes
 	use { "rose-pine/neovim", as = "rose-pine" }
-	use {"dracula/vim", as = "dracula"}
+	use { "dracula/vim", as = "dracula" }
+
+	--NvimTree
+	use {
+		'nvim-tree/nvim-tree.lua',
+		requires = {
+			'nvim-tree/nvim-web-devicons', -- optional
+		},
+	}
 
 
 	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
-	use (
-	'nvim-treesitter/nvim-treesitter',
-	{ run = ':TSUpdate'
-})
-use ('nvim-treesitter/playground')
+	use(
+		'nvim-treesitter/nvim-treesitter',
+		{ run = ':TSUpdate'
+		})
+	use('nvim-treesitter/playground')
 
-use( "ThePrimeagen/harpoon")
+	use("ThePrimeagen/harpoon")
 
-use ('mbbill/undotree')
+	use('mbbill/undotree')
 
-use('tpope/vim-fugitive')
+	use('tpope/vim-fugitive')
 
-use {"akinsho/toggleterm.nvim", tag = '*', config = function()
-  require("toggleterm").setup()
-end}
+	use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+		require("toggleterm").setup()
+	end }
 
-use {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v3.x',
-  requires = {
-    --- Uncomment the two plugins below if you want to manage the language servers from neovim
-    {'williamboman/mason.nvim'},
-    {'williamboman/mason-lspconfig.nvim'},
+	use {
+		'VonHeikemen/lsp-zero.nvim',
+		branch = 'v3.x',
+		requires = {
+			--- Uncomment the two plugins below if you want to manage the language servers from neovim
+			{ 'williamboman/mason.nvim' },
+			{ 'williamboman/mason-lspconfig.nvim' },
 
-    -- LSP Support
-    {'neovim/nvim-lspconfig'},
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},
-    {'hrsh7th/cmp-nvim-lsp'},
-    {'L3MON4D3/LuaSnip'},
-  }
-}
+			-- LSP Support
+			{ 'neovim/nvim-lspconfig' },
+			-- Autocompletion
+			{ 'hrsh7th/nvim-cmp' },
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'L3MON4D3/LuaSnip' },
+		}
+	}
 
-use ({
-    "SmiteshP/nvim-navic",
-    requires = "neovim/nvim-lspconfig"
-})
+	use({
+		"SmiteshP/nvim-navic",
+		requires = "neovim/nvim-lspconfig"
+	})
 
-use('Hoffs/omnisharp-extended-lsp.nvim')
-
-
-
+	use('Hoffs/omnisharp-extended-lsp.nvim')
 end)

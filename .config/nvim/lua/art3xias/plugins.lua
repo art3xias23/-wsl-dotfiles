@@ -1,5 +1,10 @@
-print("plugins")
 return {
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = {":TSUpdate"},
+		lazy = true
+	},
+	{"nvim-treesitter/playground", lazy = false},
 
 	{
 		"nvim-telescope/telescope.nvim",
@@ -8,11 +13,42 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 
+{
+		'VonHeikemen/lsp-zero.nvim',
+		branch = 'v2.x',
+		dependencies = {
+			-- LSP Support
+			{ 'neovim/nvim-lspconfig',            event = { "BufReadPre", "BufNewFile" }, lazy = true }, -- Required
+			{
+				-- Optional
+				'williamboman/mason.nvim',
+				build = function()
+					pcall(vim.cmd, 'MasonUpdate')
+				end,
+			},
+			{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
+
+			-- Autocompletion
+			{ 'hrsh7th/nvim-cmp',                 lazy = true }, -- Required
+			{ 'hrsh7th/cmp-nvim-lsp',             lazy = true }, -- Required
+			{ 'L3MON4D3/LuaSnip',                 lazy = true } -- Required
+		},
+		lazy = false
+	},
+
 	--Themes
 	{ "rose-pine/neovim", as = "rose-pine" },
 	{ "dracula/vim", as = "dracula" },
 
-	--NvimTree
+{ 'jose-elias-alvarez/null-ls.nvim', lazy = true },
+
+	{
+		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = { "williamboman/mason.nvim", "jose-elias-alvarez/null-ls.nvim",
+		},
+	},
+
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = {
@@ -25,11 +61,6 @@ return {
 		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 	},
 
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-	},
-	"nvim-treesitter/playground",
 
 	{ "ThePrimeagen/harpoon" },
 
@@ -42,30 +73,12 @@ return {
 		{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	},
 
-	{
-		"VonHeikemen/lsp-zero.nvim",
-		branch = "v3.x",
-		dependencies = {
-			--- Uncomment the two plugins below if you want to manage the language servers from neovim
-			{ "williamboman/mason.nvim" },
-			{ "williamboman/mason-lspconfig.nvim" },
-
-			-- LSP Support
-			{ "neovim/nvim-lspconfig" },
-			-- Autocompletion
-			{ "hrsh7th/nvim-cmp" },
-			{ "hrsh7th/cmp-nvim-lsp" },
-			{ "L3MON4D3/LuaSnip" },
-		},
-	},
 
 	{
 		"SmiteshP/nvim-navic",
 		dependencies = "neovim/nvim-lspconfig",
 	},
-"nvimtools/none-ls.nvim",
 	"Hoffs/omnisharp-extended-lsp.nvim",
-
 
 	{
 		"jay-babu/mason-null-ls.nvim",

@@ -11,12 +11,9 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 vim.opt.rtp:prepend(lazypath)
--- Set <space> as the leaderkey
--- See :h mapleader for more info
--- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
-return require('lazy').setup('art3xias.plugins', {})
-
+require("lazy").setup("art3xias.plugins", {
+	change_detection = {
+		notify = false,
+	},
+})

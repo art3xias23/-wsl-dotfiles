@@ -13,7 +13,7 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 
-{
+	{
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v2.x',
 		dependencies = {
@@ -56,15 +56,8 @@ return {
 		},
 	},
 
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
-	},
-
 
 	{ "ThePrimeagen/harpoon" },
-
-	"mbbill/undotree",
 
 	"tpope/vim-fugitive",
 
@@ -74,10 +67,6 @@ return {
 	},
 
 
-	{
-		"SmiteshP/nvim-navic",
-		dependencies = "neovim/nvim-lspconfig",
-	},
 	"Hoffs/omnisharp-extended-lsp.nvim",
 
 	{
@@ -86,27 +75,4 @@ return {
 		dependencies = { "williamboman/mason.nvim", "nvimtools/none-ls.nvim" },
 	},
 
-	"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-	"kosayoda/nvim-lightbulb",
-	"onsails/lspkind.nvim",
-	"hrsh7th/cmp-path",
-	"hrsh7th/cmp-nvim-lua",
-	"Issafalcon/lsp-overloads.nvim",
-	"ray-x/lsp_signature.nvim",
-	{
-		"akinsho/bufferline.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		version = "*",
-	},
-	"rmagatti/goto-preview",
-	"aznhe21/actions-preview.nvim",
-	"tpope/vim-surround",
-	"tpope/vim-repeat",
-	"rcarriga/nvim-notify",
-	"lukas-reineke/indent-blankline.nvim",
-	"numToStr/Comment.nvim",
-	"windwp/nvim-autopairs",
-	"karb94/neoscroll.nvim",
-	"norcalli/nvim-colorizer.lua",
-	"HiPhish/rainbow-delimiters.nvim",
 }

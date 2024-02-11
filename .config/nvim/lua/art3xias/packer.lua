@@ -67,4 +67,43 @@ return require('packer').startup(function(use)
 	})
 
 	use('Hoffs/omnisharp-extended-lsp.nvim')
+
+	use('jose-elias-alvarez/null-ls.nvim')
+
+	use({
+		"jay-babu/mason-null-ls.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		dependencies = { "williamboman/mason.nvim", "jose-elias-alvarez/null-ls.nvim",
+		}
+	})
+
+	use('https://git.sr.ht/~whynothugo/lsp_lines.nvim')
+	use('kosayoda/nvim-lightbulb')
+	use('onsails/lspkind.nvim')
+	use('hrsh7th/cmp-path')
+	use('hrsh7th/cmp-nvim-lua')
+	use('Issafalcon/lsp-overloads.nvim')
+	use('ray-x/lsp_signature.nvim')
+	use({'akinsho/bufferline.nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		version = "*"})
+	use('rmagatti/goto-preview')
+	use('aznhe21/actions-preview.nvim')
+	use('tpope/vim-surround')
+	use('tpope/vim-repeat')
+	use('rcarriga/nvim-notify')
+	use('lukas-reineke/indent-blankline.nvim')
+	use('numToStr/Comment.nvim')
+	use('windwp/nvim-autopairs')
+	use('karb94/neoscroll.nvim')
+	use('norcalli/nvim-colorizer.lua')
+	use('HiPhish/rainbow-delimiters.nvim')
+	use('')
+	use('')
+	use('')
+	use('')
+	use('')
+	use('')
+	use('')
+	use('')
 end)

@@ -1,11 +1,24 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+--Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+-- Set <space> as the leaderkey
+-- See :h mapleader for more info
+-- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+vim.g.mapleader(' ')
+vim.g.maplocalleader(' ')
 
--- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
-
-return require('packer').startup(function(use)
+return require('lazy').setup({
 	-- Packer can manage itself
-	use 'wbthomason/packer.nvim'
 
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.5',
@@ -68,12 +81,12 @@ return require('packer').startup(function(use)
 
 	use('Hoffs/omnisharp-extended-lsp.nvim')
 
-	use('jose-elias-alvarez/null-ls.nvim')
+	use('nvimtools/none-ls.nvim')
 
 	use({
 		"jay-babu/mason-null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "williamboman/mason.nvim", "jose-elias-alvarez/null-ls.nvim",
+		dependencies = { "williamboman/mason.nvim", "nvimtools/none-ls.nvim",
 		}
 	})
 
@@ -98,12 +111,3 @@ return require('packer').startup(function(use)
 	use('karb94/neoscroll.nvim')
 	use('norcalli/nvim-colorizer.lua')
 	use('HiPhish/rainbow-delimiters.nvim')
-	use('')
-	use('')
-	use('')
-	use('')
-	use('')
-	use('')
-	use('')
-	use('')
-end)

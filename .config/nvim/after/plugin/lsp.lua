@@ -3,7 +3,6 @@ lsp_zero.on_attach(function(_, bufnr)
 	lsp_zero.default_keymaps({buffer = bufnr})
 end)
 
-local lua_opts = lsp_zero.nvim_lua_ls()
 
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
@@ -26,7 +25,7 @@ cmp.setup({
   })
 })
 
-
+local lua_opts = lsp_zero.nvim_lua_ls()
 local lsp_config = require('lspconfig')
 lsp_config.lua_ls.setup(lua_opts)
 

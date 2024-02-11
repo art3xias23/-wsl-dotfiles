@@ -16,6 +16,7 @@ vim.opt.rtp:prepend(lazypath)
 -- NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-return require('lazy').setup('art3xias.plugins')
+return require('lazy').setup('art3xias.plugins', {})
 

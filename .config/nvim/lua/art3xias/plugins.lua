@@ -1,10 +1,10 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		build = {":TSUpdate"},
-		lazy = true
+		build = { ":TSUpdate" },
+		lazy = true,
 	},
-	{"nvim-treesitter/playground", lazy = false},
+	{ "nvim-treesitter/playground", lazy = false },
 
 	{
 		"nvim-telescope/telescope.nvim",
@@ -14,39 +14,38 @@ return {
 	},
 
 	{
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v2.x',
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v2.x",
 		dependencies = {
 			-- LSP Support
-			{ 'neovim/nvim-lspconfig',            event = { "BufReadPre", "BufNewFile" }, lazy = true }, -- Required
+			{ "neovim/nvim-lspconfig", event = { "BufReadPre", "BufNewFile" }, lazy = true }, -- Required
 			{
 				-- Optional
-				'williamboman/mason.nvim',
+				"williamboman/mason.nvim",
 				build = function()
-					pcall(vim.cmd, 'MasonUpdate')
+					pcall(vim.cmd, "MasonUpdate")
 				end,
 			},
-			{ 'williamboman/mason-lspconfig.nvim' }, -- Optional
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
 			-- Autocompletion
-			{ 'hrsh7th/nvim-cmp',                 lazy = true }, -- Required
-			{ 'hrsh7th/cmp-nvim-lsp',             lazy = true }, -- Required
-			{ 'L3MON4D3/LuaSnip',                 lazy = true } -- Required
+			{ "hrsh7th/nvim-cmp", lazy = true }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp", lazy = true }, -- Required
+			{ "L3MON4D3/LuaSnip", lazy = true }, -- Required
 		},
-		lazy = false
+		lazy = false,
 	},
 
 	--Themes
 	{ "rose-pine/neovim", as = "rose-pine" },
 	{ "dracula/vim", as = "dracula" },
 
-{ 'jose-elias-alvarez/null-ls.nvim', lazy = true },
+	{ "jose-elias-alvarez/null-ls.nvim", lazy = true },
 
 	{
 		"jay-babu/mason-null-ls.nvim",
 		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "williamboman/mason.nvim", "jose-elias-alvarez/null-ls.nvim",
-		},
+		dependencies = { "williamboman/mason.nvim", "jose-elias-alvarez/null-ls.nvim" },
 	},
 
 	{
@@ -55,7 +54,6 @@ return {
 			"nvim-tree/nvim-web-devicons", -- optional
 		},
 	},
-
 
 	{ "ThePrimeagen/harpoon" },
 
@@ -66,13 +64,5 @@ return {
 		{ "akinsho/toggleterm.nvim", version = "*", config = true },
 	},
 
-
 	"Hoffs/omnisharp-extended-lsp.nvim",
-
-	{
-		"jay-babu/mason-null-ls.nvim",
-		event = { "BufReadPre", "BufNewFile" },
-		dependencies = { "williamboman/mason.nvim", "nvimtools/none-ls.nvim" },
-	},
-
 }

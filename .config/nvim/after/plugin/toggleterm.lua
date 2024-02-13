@@ -6,6 +6,6 @@ function(term)
 		return 0.4 * vim.o.columns
 	end
 end,
-open_mapping = "<leader>c",
+open_mapping = "<leader>t",
 direction = "float"
 }

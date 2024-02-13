@@ -6,7 +6,6 @@ export PATH=$PATH:/usr/local/go/bin
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-
 #JAVA_HOME
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
 # Would you like to use another custom folder than $ZSH/custom?
@@ -103,11 +102,11 @@ alias lua='lua54.exe'
 #MSBuild
 alias msbuild='msbuild.exe'
 
-#dotnet
-alias dotnet='dotnet.exe'
-
 #Nuget
-alias nuget='nuget.exe'
+alias nugetw="nuget.exe"
+
+#dotnet
+alias dotnetw='dotnet.exe'
 
 # Setting PATH for Python 3.10
 PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin:${PATH}"

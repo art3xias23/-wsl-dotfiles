@@ -8,4 +8,4 @@ function ColorMyPencils(color)
 end
 
 
-ColorMyPencils("dracula")
+ColorMyPencils("vscode")

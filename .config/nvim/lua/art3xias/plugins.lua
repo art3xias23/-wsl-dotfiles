@@ -39,6 +39,7 @@ return {
 	--Themes
 	{ "rose-pine/neovim", as = "rose-pine" },
 	{ "dracula/vim", as = "dracula" },
+	{"Mofiqul/vscode.nvim", as="vscode"},
 
 	{ "jose-elias-alvarez/null-ls.nvim", lazy = true },
 
@@ -65,4 +66,5 @@ return {
 	},
 
 	"Hoffs/omnisharp-extended-lsp.nvim",
+	"karb94/neoscroll.nvim"
 }

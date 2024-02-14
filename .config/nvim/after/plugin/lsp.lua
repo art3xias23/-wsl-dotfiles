@@ -1,44 +1,36 @@
-vim.lsp.set_log_level("debug")
-
 local lsp_zero = require("lsp-zero")
-local lspconfig = require("lspconfig")
 lsp_zero.on_attach(function(_, bufnr)
 	lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
+local lspconfig = require("lspconfig")
+
 local cmp = require("cmp")
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
+cmp.setup({
+	snippet = {
+		expand = function(args)
+			require("luasnip").lsp_expand(args.body)
+		end,
+	},
+	  window = {
+       completion = cmp.config.window.bordered(),
+       documentation = cmp.config.window.bordered(),
+    },
+	  mapping = cmp.mapping.preset.insert({
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<Tab>'] = cmp.mapping.confirm({ select = true }), 
+    }),
+    sources = cmp.config.sources({
+	{name = "nvim_lsp"},
+	{name = "luasnip"},
+	{name = "omnisharp"}
+    })
 
-local cmp_mappings = lsp_zero.defaults.cmp_mappings({
-	['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-	['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-	-- ['<leader>.'] = cmp.mapping.complete_common_string(),
-	-- ['<C-f>'] = cmp.mapping.scroll_docs(4),
-	['<C-y>'] = cmp.mapping.confirm({ select = true }),
-	['<CR>'] = cmp.mapping.confirm({ select = true }),
-	['<Tab>'] = cmp.mapping.confirm({ select = true }),
-	-- ['<C-space>'] = cmp.mapping.complete(),
 })
 
-lsp_zero.setup_nvim_cmp({
-mapping = cmp_mappings,
-select_behaviour = 'insert'
-})
-
-local lua_opts = lsp_zero.nvim_lua_ls()
-lspconfig.lua_ls.setup(lua_opts)
-
-lspconfig.omnisharp.setup({
-	settings = {
-		["omnisharp"] = {
-			enable_roslyn_analysers = true,
-			enable_import_completion = true,
-			organize_imports_on_format = true,
-			filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props" },
-		},
-	}
-})
-
+-- Set up Mason, a package manager for LSP servers, formatters, and linters
 require("mason").setup({})
 
 require("mason-lspconfig").setup({
@@ -52,7 +44,17 @@ require("mason-lspconfig").setup({
 		omnisharp = function()
 			lspconfig.omnisharp.setup({
 				handlers = { ["textDocument/definition"] = require("omnisharp_extended").handler },
+				settings = {
+					["omnisharp"] = {
+						enable_roslyn_analysers = true,
+						enable_import_completion = true,
+						organize_imports_on_format = true,
+						filetypes = { "cs", "vb", "csproj", "sln", "slnx", "props" },
+					},
+				},
 			})
 		end,
 	},
 })
+
+

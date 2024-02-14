@@ -4,7 +4,7 @@ return {
 		build = { ":TSUpdate" },
 		lazy = true,
 	},
-	{ "nvim-treesitter/playground", lazy = false },
+	{ "nvim-treesitter/playground",      lazy = false },
 
 	{
 		"nvim-telescope/telescope.nvim",
@@ -18,7 +18,7 @@ return {
 		branch = "v2.x",
 		dependencies = {
 			-- LSP Support
-			{ "neovim/nvim-lspconfig", event = { "BufReadPre", "BufNewFile" }, lazy = true }, -- Required
+			{ "neovim/nvim-lspconfig",            event = { "BufReadPre", "BufNewFile" }, lazy = true }, -- Required
 			{
 				-- Optional
 				"williamboman/mason.nvim",
@@ -29,17 +29,18 @@ return {
 			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
 			-- Autocompletion
-			{ "hrsh7th/nvim-cmp", lazy = true }, -- Required
-			{ "hrsh7th/cmp-nvim-lsp", lazy = true }, -- Required
-			{ "L3MON4D3/LuaSnip", lazy = true }, -- Required
+			{ "hrsh7th/nvim-cmp",                 lazy = true }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp",             lazy = true }, -- Required
+			{ "L3MON4D3/LuaSnip",                 lazy = true }, -- Required
+			{ "saadparwaiz1/cmp_luasnip" },
 		},
 		lazy = false,
 	},
 
 	--Themes
-	{ "rose-pine/neovim", as = "rose-pine" },
-	{ "dracula/vim", as = "dracula" },
-	{"Mofiqul/vscode.nvim", as="vscode"},
+	{ "rose-pine/neovim",                as = "rose-pine" },
+	{ "dracula/vim",                     as = "dracula" },
+	{ "Mofiqul/vscode.nvim",             as = "vscode" },
 
 	{ "jose-elias-alvarez/null-ls.nvim", lazy = true },
 
@@ -66,5 +67,9 @@ return {
 	},
 
 	"Hoffs/omnisharp-extended-lsp.nvim",
-	"karb94/neoscroll.nvim"
+	"karb94/neoscroll.nvim",
+	{
+		"numToStr/Comment.nvim",
+		lazy = false,
+	},
 }

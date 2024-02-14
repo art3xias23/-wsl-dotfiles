@@ -20,12 +20,13 @@ cmp.setup({
       ['<C-Space>'] = cmp.mapping.complete(),
       ['<C-e>'] = cmp.mapping.abort(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      ['<Tab>'] = cmp.mapping.confirm({ select = true }), 
+      ['<Tab>'] = cmp.mapping.confirm({ select = true }),
     }),
     sources = cmp.config.sources({
 	{name = "nvim_lsp"},
 	{name = "luasnip"},
-	{name = "omnisharp"}
+	{name = "omnisharp"},
+	{name = "lua_ls"}
     })
 
 })
@@ -54,6 +55,29 @@ require("mason-lspconfig").setup({
 				},
 			})
 		end,
+
+		lua_ls = function ()
+			lspconfig.lua_ls.setup({
+				on_attach = lsp_zero.on_attach,
+				settings = {
+					Lua = {
+						runtime = {
+							version = "LuaJIT",
+						},
+						diagnostics = {
+							globals = {"vim"},
+						},
+						workspace ={
+							library = vim.api.nvim_get_runtime_file("", true),
+						},
+						telemetry = {
+							enabled = false
+						}
+
+					}
+				}
+			})
+		end
 	},
 })
 

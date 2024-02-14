@@ -68,8 +68,13 @@ return {
 
 	"Hoffs/omnisharp-extended-lsp.nvim",
 	"karb94/neoscroll.nvim",
+	-- Commenting and Uncommenting
+
 	{
 		"numToStr/Comment.nvim",
 		lazy = false,
 	},
+
+	-- Nice suggested actions previewer 
+	{ 'aznhe21/actions-preview.nvim',        lazy = true },
 }

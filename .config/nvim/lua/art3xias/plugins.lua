@@ -77,4 +77,7 @@ return {
 
 	-- Nice suggested actions previewer 
 	{ 'aznhe21/actions-preview.nvim',        lazy = true },
+
+	-- Nice looking intro page
+	{ 'goolord/alpha-nvim',        dependencies = { 'nvim-tree/nvim-web-devicons' }, lazy = true },
 }

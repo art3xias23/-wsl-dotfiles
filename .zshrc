@@ -100,7 +100,7 @@ alias gmm='git fetch origin master:master && git merge master'
 alias lua='lua54.exe'
 
 #MSBuild
-alias msbuild='msbuild.exe'
+alias msbuildw='msbuild.exe'
 
 #Nuget
 alias nugetw="nuget.exe"

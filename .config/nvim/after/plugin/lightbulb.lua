@@ -1,0 +1,5 @@
+-- annoying in c# dev as it's on every line for some unneccessary suggestions
+--
+-- require("nvim-lightbulb").setup({
+--   autocmd = { enabled = true }
+-- })

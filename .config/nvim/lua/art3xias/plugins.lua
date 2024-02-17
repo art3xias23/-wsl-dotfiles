@@ -18,7 +18,7 @@ return {
 		branch = "v2.x",
 		dependencies = {
 			-- LSP Support
-			{ "neovim/nvim-lspconfig", event = { "BufReadPre", "BufNewFile" }, lazy = true }, -- Required
+			{ "neovim/nvim-lspconfig", event = { "BufReadPre", "BufNewFile" }, lazy = false }, -- Required
 			{
 				-- Optional
 				"williamboman/mason.nvim",
@@ -119,4 +119,5 @@ return {
 			...,
 		},
 	},
+	{ 'kosayoda/nvim-lightbulb' },
 }

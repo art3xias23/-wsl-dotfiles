@@ -1,4 +1,3 @@
-
 using System;
 
 namespace BankingSystem
@@ -26,7 +25,7 @@ namespace BankingSystem
                         break;
                     case 2:
                         Console.Write("Enter account number: ");
-                        int accNumber1 = int.Parse(Console.ReadLine());
+                        var accNumber1 = int.Parse(Console.ReadLine());
                         Console.Write("Enter amount to deposit: ");
                         double depositAmount = double.Parse(Console.ReadLine());
                         bank.Deposit(accNumber1, depositAmount);

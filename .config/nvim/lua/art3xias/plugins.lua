@@ -111,4 +111,12 @@ return {
 	},
 	--markdown visualiser
 	{ "ellisonleao/glow.nvim", config = true, cmd = "Glow" },
+
+	--highligh redo items
+	{
+		"tzachar/highlight-undo.nvim",
+		opts = {
+			...,
+		},
+	},
 }

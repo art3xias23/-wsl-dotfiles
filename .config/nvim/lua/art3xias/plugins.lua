@@ -89,8 +89,11 @@ return {
 	},
 
 	--open buffers in tabs and style them
-	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 
 	--autoclose html tags
-	{"windwp/nvim-ts-autotag", lazy = true}
+	{ "windwp/nvim-ts-autotag", lazy = true },
+	{
+		"stevearc/dressing.nvim"
+	},
 }

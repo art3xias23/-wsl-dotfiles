@@ -38,7 +38,8 @@ require("mason-lspconfig").setup({
 	ensure_installed = {
 		"lua_ls",
 		"omnisharp",
-		"html"
+		"html",
+		"cssls"
 	},
 	handlers = {
 		lsp_zero.default_setup,

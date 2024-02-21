@@ -102,11 +102,6 @@ return {
 		opts = {},
 		-- stylua: ignore
 		keys = {
-			{ "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-			{ "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-			{ "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-			{ "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-			{ "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
 		},
 	},
 	--markdown visualiser
@@ -119,5 +114,14 @@ return {
 			...,
 		},
 	},
-	{ 'kosayoda/nvim-lightbulb' },
+	{ "kosayoda/nvim-lightbulb" },
+	{ "mfussenegger/nvim-dap" },
+	--Currently not working. Issue is open on github for WSL
+	{
+		"https://github.com/adelarsq/image_preview.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("image_preview").setup()
+		end,
+	},
 }

@@ -26,6 +26,7 @@ cmp.setup({
 	{name = "nvim_lsp"},
 	{name = "luasnip"},
 	{name = "omnisharp"},
+	{name = "tsserver"},
 	{name = "lua_ls"}
     })
 
@@ -39,7 +40,8 @@ require("mason-lspconfig").setup({
 		"lua_ls",
 		"omnisharp",
 		"html",
-		"cssls"
+		"cssls",
+		"tsserver"
 	},
 	handlers = {
 		lsp_zero.default_setup,

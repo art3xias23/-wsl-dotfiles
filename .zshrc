@@ -67,6 +67,7 @@ alias env='nvim ~/.config/nvim/init.lua'
 alias snv='source ~/.config/nvim/init.lua'
 alias e='nvim'
 alias vim='nvim'
+alias v='nvim'
 
 #SBCL
 alias nsb="rlwrap sbcl --load ~/.config/nvim/plugged/vlime/lisp/start-vlime.lisp"

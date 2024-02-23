@@ -1,3 +1,44 @@
+local dap = require("dap")
+
+--
+--Adapters
+--
+dap.set_log_level('TRACE')
+dap.adapters.coreclr = {
+  type = 'executable',
+  command = '/usr/local/netcoredbg',
+  args = {'--interpreter=vscode'}
+}
+
+--
+--Configuration
+--
+dap.configurations.cs = {
+  {
+    type = "coreclr",
+    name = "launch - netcoredbg",
+    request = "launch",
+    program = function()
+        return vim.fn.input("Path to dll: ", vim.fn.getcwd() .. "/bin/Debug/", "file")
+end,
+      justMyCode = false,
+    stopAtEntry = false,
+    env = {
+      ASPNETCORE_ENVIRONMENT = function()
+        -- todo: request input from ui
+        return "Development"
+      end,
+      ASPNETCORE_URLS = function()
+        -- todo: request input from ui
+        return "http://localhost:8080"
+      end,
+    },
+  },
+}
+
+--
+--Mappings
+--
     vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
     vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
     vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)

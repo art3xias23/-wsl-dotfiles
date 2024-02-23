@@ -5,8 +5,8 @@ dap.configurations.cs = {
     name = "launch - netcoredbg",
     request = "launch",
     program = function()
-        return vim.fn.input('Path to dll: ', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-    end,
+        return "/mnt/c/Users/kmilchev/source/repos/Balternative/src/AgePartnership.Tel.App/AgePartnership.Tel.App/bin/Debug/net8.0/AgePartnership.Tel.App.dll"
+end,
       justMyCode = false,
     stopAtEntry = false,
     env = {

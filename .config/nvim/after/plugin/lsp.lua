@@ -3,6 +3,7 @@ lsp_zero.on_attach(function(_, bufnr)
 	lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
+require("neodev").setup({})
 local lspconfig = require("lspconfig")
 
 local cmp = require("cmp")
@@ -34,6 +35,7 @@ cmp.setup({
 
 -- Set up Mason, a package manager for LSP servers, formatters, and linters
 require("mason").setup({})
+  -- add any options here, or leave empty to use the default settings
 
 require("mason-lspconfig").setup({
 	ensure_installed = {
@@ -65,6 +67,7 @@ require("mason-lspconfig").setup({
 				on_attach = lsp_zero.on_attach,
 				settings = {
 					Lua = {
+						callSnippet = "Replace",
 						runtime = {
 							version = "LuaJIT",
 						},

@@ -59,7 +59,7 @@ return {
 
 	{ "ThePrimeagen/harpoon" },
 
-	"tpope/vim-fugitive",
+	-- "tpope/vim-fugitive",
 
 	{
 		-- amongst your other plugins
@@ -124,4 +124,6 @@ return {
 			require("image_preview").setup()
 		end,
 	},
+	-- Signature help, docs and completion for the nvim lua api
+	{ "folke/neodev.nvim", opts = {} }
 }

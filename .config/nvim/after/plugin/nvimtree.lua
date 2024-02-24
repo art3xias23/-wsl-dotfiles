@@ -6,3 +6,5 @@ require("nvim-tree").setup({
 		width = 30,
 	},
 })
+
+vim.keymap.set("n", "<leader>t", "<cmd>:NvimTreeToggle<CR>", {desc = "Open/Close nvim tree"})

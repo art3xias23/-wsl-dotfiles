@@ -124,6 +124,11 @@ return {
 			require("image_preview").setup()
 		end,
 	},
+
+	-- Ui for nvim-dap
+	{'mfussenegger/nvim-dap'},
+	{'rcarriga/nvim-dap-ui'},
+
 	-- Signature help, docs and completion for the nvim lua api
 	{ "folke/neodev.nvim", opts = {} }
 }

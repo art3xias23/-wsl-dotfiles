@@ -3,7 +3,16 @@ lsp_zero.on_attach(function(_, bufnr)
 	lsp_zero.default_keymaps({ buffer = bufnr })
 end)
 
-require("neodev").setup({})
+require("neodev").setup({
+	library =
+	{
+		plugins =
+		{
+			"nvim-dap-ui"
+		},
+		types = true
+	},
+})
 local lspconfig = require("lspconfig")
 
 local cmp = require("cmp")

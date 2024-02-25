@@ -10,9 +10,15 @@ dap.adapters.coreclr = {
   args = {'--interpreter=vscode'}
 }
 
+dap.adapters.firefox{
+	  type = 'executable',
+  command = 'node',
+  args = '/usr/local/vscode-firefox-debug/dist/adapter.bundle.js'}
+
 --
 --Configuration
 --
+--#region
 dap.configurations.cs = {
   {
     type = "coreclr",
@@ -34,6 +40,18 @@ end,
       end,
     },
   },
+}
+
+dap.configurations.typescript = {
+  {  
+  name = 'Debug with Firefox',
+  type = 'firefox',
+  request = 'launch',
+  reAttach = true,
+  url = 'http://localhost:8080',
+  webRoot = '${workspaceFolder}',
+  firefoxExecutable = '/mnt/c/Users/kmilchev/AppData/Local/Firefox Developer Edition/firefox.exe'
+  }
 }
 
 --

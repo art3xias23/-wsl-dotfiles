@@ -31,10 +31,9 @@ local custom_config = {
     {
       elements = {
         "console",
-	"repl"
       },
       size = 10,
-      position = "top", -- Can be "bottom" or "top"
+      position = "bottom", -- Can be "bottom" or "top"
     },
   },
   floating = {

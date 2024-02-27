@@ -13,7 +13,7 @@ telescope.setup({
 			"--hidden", -- add this 
 		},
 
-		file_ignore_patterns = {"bin", "obj", ".vs"}
+		file_ignore_patterns = {"bin", "obj", ".vs", "node_modules"}
 		-- your other options
 	},
 

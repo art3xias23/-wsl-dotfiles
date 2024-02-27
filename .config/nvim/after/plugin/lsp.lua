@@ -4,13 +4,11 @@ lsp_zero.on_attach(function(_, bufnr)
 end)
 
 require("neodev").setup({
-	library =
-	{
-		plugins =
-		{
-			"nvim-dap-ui"
+	library = {
+		plugins = {
+			"nvim-dap-ui",
 		},
-		types = true
+		types = true,
 	},
 })
 local lspconfig = require("lspconfig")
@@ -22,29 +20,28 @@ cmp.setup({
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-	  window = {
-       completion = cmp.config.window.bordered(),
-       documentation = cmp.config.window.bordered(),
-    },
-	  mapping = cmp.mapping.preset.insert({
-      ['<C-Space>'] = cmp.mapping.complete(),
-      ['<C-e>'] = cmp.mapping.abort(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-      ['<Tab>'] = cmp.mapping.confirm({ select = true }),
-    }),
-    sources = cmp.config.sources({
-	{name = "nvim_lsp"},
-	{name = "luasnip"},
-	{name = "omnisharp"},
-	{name = "tsserver"},
-	{name = "lua_ls"}
-    })
-
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
+	mapping = cmp.mapping.preset.insert({
+		["<C-Space>"] = cmp.mapping.complete(),
+		["<C-e>"] = cmp.mapping.abort(),
+		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+		["<Tab>"] = cmp.mapping.confirm({ select = true }),
+	}),
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+		{ name = "omnisharp" },
+		{ name = "tsserver" },
+		{ name = "lua_ls" },
+	}),
 })
 
 -- Set up Mason, a package manager for LSP servers, formatters, and linters
 require("mason").setup({})
-  -- add any options here, or leave empty to use the default settings
+-- add any options here, or leave empty to use the default settings
 
 require("mason-lspconfig").setup({
 	ensure_installed = {
@@ -52,7 +49,8 @@ require("mason-lspconfig").setup({
 		"omnisharp",
 		"html",
 		"cssls",
-		"tsserver"
+		"tsserver",
+		"emmet_ls",
 	},
 	handlers = {
 		lsp_zero.default_setup,
@@ -71,7 +69,7 @@ require("mason-lspconfig").setup({
 			})
 		end,
 
-		lua_ls = function ()
+		lua_ls = function()
 			lspconfig.lua_ls.setup({
 				on_attach = lsp_zero.on_attach,
 				settings = {
@@ -81,20 +79,46 @@ require("mason-lspconfig").setup({
 							version = "LuaJIT",
 						},
 						diagnostics = {
-							globals = {"vim"},
+							globals = { "vim" },
 						},
-						workspace ={
+						workspace = {
 							library = vim.api.nvim_get_runtime_file("", true),
 						},
 						telemetry = {
-							enabled = false
-						}
-
-					}
-				}
+							enabled = false,
+						},
+					},
+				},
 			})
-		end
+		end,
+
+		emmet_ls = function()
+			lspconfig.emmet_ls.setup({
+				on_attach = lsp_zero.on_attach,
+				capabilities = lsp_zero.capabilities,
+				filetypes = {
+					"css",
+					"eruby",
+					"html",
+					"javascript",
+					"javascriptreact",
+					"less",
+					"sass",
+					"scss",
+					"svelte",
+					"pug",
+					"typescriptreact",
+					"vue",
+				},
+				init_options = {
+					html = {
+						options = {
+							-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+							["bem.enabled"] = true,
+						},
+					},
+				},
+			})
+		end,
 	},
 })
-
-

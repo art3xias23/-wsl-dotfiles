@@ -33,7 +33,7 @@ local custom_config = {
         "console",
       },
       size = 10,
-      position = "bottom", -- Can be "bottom" or "top"
+      position = "top", -- Can be "bottom" or "top"
     },
   },
   floating = {

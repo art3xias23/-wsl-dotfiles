@@ -30,6 +30,7 @@ dap.configurations.cs = {
 		end,
 		justMyCode = false,
 		stopAtEntry = false,
+		stopOnException = true,
 		env = {
 			ASPNETCORE_ENVIRONMENT = function()
 				-- todo: request input from ui
@@ -39,6 +40,12 @@ dap.configurations.cs = {
 				-- todo: request input from ui
 				return "http://localhost:8008"
 			end,
+		},
+		exceptionOptions = {
+			{
+				path = { "MyNamespace.MyClass.MyMethod" },
+				breakMode = "always", -- Other options: "unhandled", "never", "userUnhandled"
+			},
 		},
 	},
 }

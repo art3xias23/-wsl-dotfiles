@@ -2,6 +2,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 #
+export PATH=$PATH:/opt/nvim/
+export PATH=$PATH:/usr/local/bin/nvim/
 export PATH=$PATH:/usr/local/go/bin
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -45,6 +47,7 @@ export PATH="$HOME/.luarocks/bin:$PATH"
 alias open='explorer.exe'
 alias templ='templ.exe'
 alias ll='ls -l'
+alias ll='ls -la'
 alias ezsh="nvim ~/.zshrc"
 alias szsh="source ~/.zshrc"
 alias start='cmd.exe /C start'
@@ -121,6 +124,7 @@ export PATH="$PATH:/home/tino/.local/lib/python3.9/site-packages/openai"
 export PATH="$PATH:/opt/mssql-tools/bin"
 
 alias pip=pip3
+alias python=python3
 #alias mssql-cli='python3 -m /home/tino/.local/lib/python3.9/site-packages/mssqlcli/main'
 
 #NPM
@@ -175,5 +179,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
 
 
+
+eval "$(zoxide init zsh)"
 
 

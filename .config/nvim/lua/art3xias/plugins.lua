@@ -126,9 +126,12 @@ return {
 	},
 
 	-- Ui for nvim-dap
-	{'mfussenegger/nvim-dap'},
-	{'rcarriga/nvim-dap-ui'},
+	{ "mfussenegger/nvim-dap" },
+	{ "rcarriga/nvim-dap-ui" },
 
 	-- Signature help, docs and completion for the nvim lua api
-	{ "folke/neodev.nvim", opts = {} }
+	{ "folke/neodev.nvim", opts = {} },
+
+	-- Help with line indentention guides
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 }

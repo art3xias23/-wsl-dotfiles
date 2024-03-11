@@ -14,8 +14,8 @@ alias open='explorer.exe'
 alias templ='templ.exe'
 alias ll='ls -l'
 alias ll='ls -la'
-alias ezsh="nvim ~/.zshrc"
-alias szsh="source ~/.zshrc"
+alias ezsh="nvim ~/.config/zsh/.zshrc"
+alias szsh="source ~/.config/zsh/.zshrc"
 alias start='cmd.exe /C start'
 alias clip="clip.exe"
 alias grep='grep --color=always'
@@ -24,9 +24,10 @@ alias grep='grep --color=always'
 alias luadir="cd /mnt/c/Users/kmilchev/Exercism/lua"
 alias homedir="cd ~/" 
 alias ndir="cd ~/.config/nvim" 
+alias zdir="cd ~/.config/zsh" 
 alias workdir="cd /mnt/c/Users/kmilchev/source/repos/AgePartnership"
-alias cld="cd /mnt/c/Users/kmilchev/Exercism/common-lisp/"
-alias pcld="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Lisp/CommonLisp/Practical_Common_Lisp/"
+alias cldir="cd /mnt/c/Users/kmilchev/Exercism/common-lisp/"
+alias pcldir="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Lisp/CommonLisp/Practical_Common_Lisp/"
 alias codedir="cd /mnt/c/Users/kmilchev/Desktop/Code/"
 alias hx="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Web/htmx-playground"
 alias ggo="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/go/"
@@ -48,7 +49,7 @@ alias wsl="wsl.exe"
 alias cl='clear'
 #Git
 
-alias git="git.exe"
+alias git='git.exe'
 alias ga='git add'
 alias gcp='git cherry-pick'
 alias gaa='git add -A'

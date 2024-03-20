@@ -22,14 +22,13 @@ alias grep='grep --color=always'
 #Directories
 
 alias luadir="cd /mnt/c/Users/kmilchev/Exercism/lua"
-alias homedir="cd ~/" 
+alias hdir="cd ~/" 
 alias ndir="cd ~/.config/nvim" 
 alias zdir="cd ~/.config/zsh" 
 alias workdir="cd /mnt/c/Users/kmilchev/source/repos/AgePartnership"
 alias cldir="cd /mnt/c/Users/kmilchev/Exercism/common-lisp/"
 alias pcldir="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Lisp/CommonLisp/Practical_Common_Lisp/"
-alias codedir="cd /mnt/c/Users/kmilchev/Desktop/Code/"
-alias hx="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/Web/htmx-playground"
+alias cdir="cd /mnt/c/Users/kmilchev/Desktop/Code/"
 alias ggo="cd /mnt/c/Users/kmilchev/Desktop/Tino/Code/go/"
 
 #Nvim

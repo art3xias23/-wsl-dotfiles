@@ -7,5 +7,5 @@ function(term)
 	end
 end,
 open_mapping = [[<C-\>]],
-direction = "float"
+direction = "horizontal"
 }

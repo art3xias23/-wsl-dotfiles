@@ -68,6 +68,7 @@ alias gcb='git rev-parse --abbrev-ref HEAD'
 alias gmd='git fetch origin development:development && git merge development'
 alias gmm='git fetch origin master:master && git merge master'
 alias lua='lua54.exe'
+alias gsu='git branch --set-upstream-to=origin/<branch> feature/Tel/Main'
 
 #MSBuild
 alias msbuildw='msbuild.exe'

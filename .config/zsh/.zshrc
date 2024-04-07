@@ -14,6 +14,13 @@ setopt prompt_subst
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-PROMPT='%F{green}→%f %F{cyan}%1~ %f '
+PROMPT='%F{green}→%f %F{cyan}%1~ %f %F{magenta}($(git_branch)) %f '
 
+# Custom prompt with Git branch
+#
+git_branch() {
+    git branch 2>/dev/null | sed -n 's/* \(.*\)/\1/p'
+}
+
+# Set the prompt to include Git branch if inside a Git repository
 eval "$(zoxide init zsh)"

@@ -53,7 +53,8 @@ require("mason-lspconfig").setup({
 		"emmet_ls",
 		"tailwindcss",
 		"gopls",
-		"templ"
+		"templ",
+		"html"
 	},
 	handlers = {
 		lsp_zero.default_setup,
@@ -121,6 +122,30 @@ require("mason-lspconfig").setup({
 						},
 					},
 				},
+			})
+		end,
+
+		templ = function()
+			lspconfig.templ.setup({
+				on_attach = lsp_zero.on_attach,
+				capabilities = lsp_zero.capabilities,
+			})
+		end,
+
+		html= function()
+			lspconfig.html.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				filetypes = { "html", "templ" },
+			})
+		end,
+
+		tailwindcss = function()
+			lspconfig.tailwindcss.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+				filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+				init_options = { userLanguages = { templ = "html" } },
 			})
 		end,
 	},

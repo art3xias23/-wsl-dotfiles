@@ -51,6 +51,9 @@ require("mason-lspconfig").setup({
 		"cssls",
 		"tsserver",
 		"emmet_ls",
+		"tailwindcss",
+		"gopls",
+		"templ"
 	},
 	handlers = {
 		lsp_zero.default_setup,

@@ -1,7 +1,7 @@
 #!/bin/sh
 
  #MongoDb
- alias mngl='mongosh --host 172.28.224.1 --port 27017'
+ alias mngl='mongosh.exe --host 172.28.224.1 --port 27017'
 
  #Golang
  alias wgo='wgo.exe'

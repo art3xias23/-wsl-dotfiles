@@ -54,7 +54,7 @@ require("mason-lspconfig").setup({
 		"tailwindcss",
 		"gopls",
 		"templ",
-		"html"
+		"html",
 	},
 	handlers = {
 		lsp_zero.default_setup,
@@ -132,7 +132,7 @@ require("mason-lspconfig").setup({
 			})
 		end,
 
-		html= function()
+		html = function()
 			lspconfig.html.setup({
 				on_attach = on_attach,
 				capabilities = capabilities,
@@ -146,6 +146,35 @@ require("mason-lspconfig").setup({
 				capabilities = capabilities,
 				filetypes = { "templ", "astro", "javascript", "typescript", "react" },
 				init_options = { userLanguages = { templ = "html" } },
+			})
+		end,
+
+		gopls = function()
+			lspconfig.gopls.setup({
+				on_attach = on_attach_vim,
+				capabilities = capabilities,
+				cmd = { "gopls", "serve" },
+				settings = {
+					gopls = {
+						analyses = {
+							unusedparams = true,
+							shadow = true, -- enable shadow variable checks
+						},
+						staticcheck = true,
+						linksInHover = false,
+						codelenses = {
+							generate = true,
+							gc_details = true,
+							regenerate_cgo = true,
+							tidy = true,
+							upgrade_dependency = true,
+							vendor = true,
+						},
+						usePlaceholders = true,
+						experimentalPostfixCompletions = true,
+						hoverKind = "FullDocumentation",
+					},
+				},
 			})
 		end,
 	},

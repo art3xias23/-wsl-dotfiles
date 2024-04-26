@@ -11,7 +11,6 @@
 
  #Misc
 alias open='explorer.exe'
-alias templ='templ.exe'
 alias ll='ls -l'
 alias ll='ls -la'
 alias ezsh="nvim ~/.config/zsh/.zshrc"

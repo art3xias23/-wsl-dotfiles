@@ -134,16 +134,16 @@ require("mason-lspconfig").setup({
 
 		html = function()
 			lspconfig.html.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
+				on_attach = lsp_zero.on_attach,
+				capabilities = lsp_zero.capabilities,
 				filetypes = { "html", "templ" },
 			})
 		end,
 
 		tailwindcss = function()
 			lspconfig.tailwindcss.setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
+				on_attach = lsp_zero.on_attach,
+				capabilities = lsp_zero.capabilities,
 				filetypes = { "templ", "astro", "javascript", "typescript", "react" },
 				init_options = { userLanguages = { templ = "html" } },
 			})
@@ -151,8 +151,8 @@ require("mason-lspconfig").setup({
 
 		gopls = function()
 			lspconfig.gopls.setup({
-				on_attach = on_attach_vim,
-				capabilities = capabilities,
+				on_attach = lsp_zero.on_attach,
+				capabilities = lsp_zero.capabilities,
 				cmd = { "gopls", "serve" },
 				settings = {
 					gopls = {

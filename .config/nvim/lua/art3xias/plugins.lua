@@ -134,4 +134,19 @@ return {
 
 	-- Help with line indentention guides
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+
+	--help with surrounding
+	{
+		"kylechui/nvim-surround",
+		version = "*", -- Use for stability; omit to use `main` branch for the latest features
+		event = "VeryLazy",
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end,
+	},
+
+	--help with monitoring which languages I use in neovim
+	{ 'wakatime/vim-wakatime', lazy = false }
 }

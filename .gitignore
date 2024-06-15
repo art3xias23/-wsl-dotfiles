@@ -1,4 +1,5 @@
 .config/nvim_bak/plugged/
+.config/zsh/secret_exports.zsh
 ad-hoc.lisp
 .antigen
 .bash_history

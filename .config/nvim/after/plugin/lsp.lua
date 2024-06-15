@@ -45,6 +45,7 @@ require("mason").setup({})
 
 require("mason-lspconfig").setup({
 	ensure_installed = {
+		"clangd",
 		"lua_ls",
 		"omnisharp",
 		"html",
@@ -177,5 +178,10 @@ require("mason-lspconfig").setup({
 				},
 			})
 		end,
+
+		clangd=function()
+			lspconfig.clangd.setup({})
+		end
+
 	},
 })

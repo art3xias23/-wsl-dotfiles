@@ -49,6 +49,7 @@ alias cl='clear'
 
 alias git='git.exe'
 alias ga='git add'
+alias gc='git checkout'
 alias gcp='git cherry-pick'
 alias gaa='git add -A'
 alias gcm='git commit -m'
@@ -66,8 +67,9 @@ alias gcmer='git branch --sort=-committerdate | head -10'
 alias gcb='git rev-parse --abbrev-ref HEAD'
 alias gmd='git fetch origin development:development && git merge development'
 alias gmm='git fetch origin master:master && git merge master'
+
+#Lua
 alias lua='lua54.exe'
-alias gsu='git branch --set-upstream-to=origin/<branch> feature/Tel/Main'
 
 #MSBuild
 alias msbuildw='msbuild.exe'

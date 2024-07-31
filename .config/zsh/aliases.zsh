@@ -9,6 +9,9 @@
  alias grun='go run'
  alias tr='templ generate && go run .'
 
+ #Hurl
+ alias hurl='hurl.exe'
+
  #Misc
 alias open='explorer.exe'
 alias ll='ls -l'

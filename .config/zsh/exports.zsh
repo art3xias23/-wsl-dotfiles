@@ -32,3 +32,5 @@ export PATH=$PATH:/home/tino/.local/lib/python3.9/site-packages/openai
 #Use sqlcmd
 export PATH=$PATH:/opt/mssql-tools/bin
 
+#ch
+export MANPATH=$MANPATH:/usr/local/ch8.5/docs/man
